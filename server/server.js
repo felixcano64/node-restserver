@@ -1,46 +1,26 @@
 require('./config/config');
 
+const mongoose = require('mongoose');
+
 const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(require('./routes/usuario'));
 
-app.get('/usuario', function(req, res) {
-    res.json('get usuario');
-});
+mongoose.connect('mongodb://localhost:27017/cafe', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+    (err, res) => {
 
-app.post('/usuario', function(req, res) {
+        if (err) throw err;
 
-    let body = req.body;
+        console.log('Base de Datos ONLINE');
 
-    if (body.nombre === undefined) {
-        res.status(400).json({
-            ok: false,
-            mensaje: 'El nombre es indispensable'
-        })
-    } else {
-        res.json({
-            persona: body
-        });
-    }
-});
-
-app.put('/usuario/:id', function(req, res) {
-
-    let id = req.params.id;
-    res.json({
-        id
     });
-});
 
-app.delete('/usuario', function(req, res) {
-    res.json('delete usuario');
-});
 
 app.listen(process.env.PORT, () => {
-    console.log('escuchando en el puerot: ', process.env.PORT);
+    console.log('Escuchando en el puerot: ', process.env.PORT);
 });
