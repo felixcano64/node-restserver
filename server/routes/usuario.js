@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const Usuario = require('../models/usuario');
 const app = express();
 
-
 app.get('/usuario', function(req, res) {
     res.json('get usuario');
 });
