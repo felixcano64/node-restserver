@@ -17,11 +17,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
 
 let urlDB;
 
-if (process.env.NODE_ENV === 'xev') {
+if (process.env.NODE_ENV === 'dev') {
     urlDB = 'mongodb://localhost:27017/cafe';
 } else {
-    //urlDB = 'mongodb://localhost:27017/cafe';
-    urlDB = 'mongodb+srv://jorlaf:9Bot2j3XtAazIoUV@cluster0.9axsh.mongodb.net/cafe';
+    urlDB = process.env.MONGO_URL;
 }
 
 process.env.URLDB = urlDB;
