@@ -38,3 +38,9 @@ process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
 //=============================
 
 process.env.SEED = process.env.SEED || 'este-es-el-seed-desarrollo';
+
+//=============================
+// google client
+//=============================
+
+process.env.CLIENT_ID = process.env.CLIENT_ID || '886926509730-mpssb1d045thlmunk8nn645879modpho.apps.googleusercontent.com'
